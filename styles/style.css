@@ -70,6 +70,8 @@ footer {
 #nav-top {
     width: 100%;
     flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
 }
 
 .top-nav-center {
@@ -143,6 +145,16 @@ footer {
     transform: translate(-50%, -50%);
 }
 
+#logo-gif {
+    position: relative;
+    z-index: 100;
+}
+
+#logo-gif img {
+    width: 100%;
+    height: auto;
+}
+
 .music {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -190,6 +202,10 @@ footer {
     padding-left: 10px;
     padding-top: 10px;
     margin: 0;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 @media (max-width:800px) {
