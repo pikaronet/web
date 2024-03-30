@@ -1,0 +1,220 @@
+:root {
+    --pik-purple: rgb(163, 62, 247);
+    --pik-blue: rgb(62, 133, 247);
+}
+
+body {
+    background-color: rgb(19, 19, 19);
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+
+    overflow-x: hidden;
+}
+
+a {
+    color: white;
+    font-size: 2vw;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: right;
+    margin: 30px;
+}
+
+#wrapper {
+    margin: 30px;
+}
+
+#img-logo {
+    width: 100%;
+    height: 100%;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+#menu-text {
+    position: relative;
+    z-index: 200;
+}
+
+.list-style-none {
+    list-style: none;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.italics {
+    font-style: italic;
+}
+
+#nav-top {
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.top-nav-center {
+    color: white;
+    letter-spacing: 20px;
+    font-size: 1.5vw;
+    margin-top: 2.5vh;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+
+#nav-top ul {
+    padding: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+    text-wrap: nowrap;
+    display: grid;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 40px;
+    width: fit-content;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: var(--pik-blue);
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#img-3d-render {
+    display: block;
+    margin: auto;
+
+    min-width: 200px;
+    width: 80vh;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.music {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding-top: 30px;
+
+}
+
+.song {
+    position: relative;
+}
+
+.song a {
+    margin: 0;
+    padding: 0;
+}
+
+.song img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song:hover {
+    filter: brightness(60%);
+    transition: 0.2s
+}
+
+.overlay {
+    background-color: rgba(19, 19, 19, 0.594);
+    color: white;
+    padding-bottom: 30%;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    visibility: hidden;
+}
+
+.song:hover > a > .overlay {
+    visibility: visible;
+}
+
+.overlay p {
+    padding-left: 10px;
+    padding-top: 10px;
+    margin: 0;
+}
+
+@media (max-width:800px) {
+    a {
+        font-size: 4vw;
+    }
+
+    .top-nav-center {
+        font-size: 2.5vw;
+        letter-spacing: 5px;
+    }
+
+    #img-logo {
+        width: 30%;
+    }
+
+    #img-3d-render {
+        width: 70%;
+    }
+
+    #mySideNav {
+        width: 100%;
+    }
+
+    .music {
+        grid-template-columns: 1fr;
+    }
+}
