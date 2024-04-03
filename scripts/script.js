@@ -49,7 +49,7 @@ function myFunction(x) {
 function ani() {
   let text = document.getElementById("click-start");
   const overlay = document.getElementById("black-overlay");
-  var audio = new Audio("/sounds/bells2.wav");
+  var audio = new Audio("sounds/bells2.wav");
   audio.volume = 0.4;
 
   text.addEventListener("animationend", () => {
