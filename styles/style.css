@@ -5,6 +5,7 @@
 
 body {
     background-color: rgb(19, 19, 19);
+    color: white;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -106,7 +107,6 @@ footer {
     padding: 8px 8px 8px 40px;
     width: fit-content;
     font-size: 25px;
-    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -177,7 +177,6 @@ footer {
 
 .overlay {
     background-color: rgba(19, 19, 19, 0.594);
-    color: white;
     padding-bottom: 30%;
     bottom: 0;
     width: 100%;
@@ -197,6 +196,53 @@ footer {
 
 .hidden {
     visibility: hidden;
+}
+
+#black-overlay {
+    background-color: rgb(10, 10, 10);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* Horizontally center */
+    justify-content: center;
+    /* Vertically center */
+    align-items: center;
+    backdrop-filter: blur(20px);
+}
+
+#black-overlay p {
+    margin: 0;
+    font-size: 5vw;
+    pointer-events: none;
+}
+
+#black-overlay img {
+    width: 20%;
+    height: auto;
+}
+
+@keyframes lowerOpacityAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes raiseOpacityAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @media (max-width:800px) {
