@@ -53,7 +53,7 @@ function ani() {
   audio.volume = 0.4;
 
   text.addEventListener("animationend", () => {
-    overlay.innerHTML = "<img src='images/logo_x.png' id='click-start'>";
+    overlay.innerHTML = "<img src='images/whiteblank.png' id='click-start'>";
     let text = document.getElementById("click-start");
     text.style.animation = "raiseOpacityAnimation 0.5s linear 1";
     audio.play();
