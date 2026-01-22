@@ -17,10 +17,10 @@ x.addEventListener("change", function () {
 function openNav() {
   if (document.getElementById("mySidenav").style.width == width) {
     closeNav();
-    document.getElementById("menu-text").innerText = "menu";
+    document.getElementById("menu-text").innerText = "[menu]";
   } else {
     document.getElementById("mySidenav").style.width = width;
-    document.getElementById("menu-text").innerText = "close";
+    document.getElementById("menu-text").innerText = "[close]";
   }
 }
 
