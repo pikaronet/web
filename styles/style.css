@@ -18,6 +18,11 @@
   --color-song-overlay: rgba(255, 255, 255, 0.594);
 }
 
+[data-theme="light"] #img-spv,
+[data-theme="light"] #img-logo {
+  filter: invert(1);
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
@@ -89,7 +94,8 @@ footer {
   margin: 30px;
 }
 
-#img-logo {
+#img-logo,
+#img-logo-gif {
   min-width: 100px;
   max-width: 100px;
 }
@@ -308,7 +314,8 @@ footer {
     font-size: 30px;
   }
 
-  #img-logo {
+  #img-logo,
+  #img-logo-gif {
     width: 30%;
   }
 
