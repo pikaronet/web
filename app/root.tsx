@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -11,6 +12,9 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./context/ThemeContext.js";
+import { useState } from "react";
+import { Sidebar } from "./components/Sidebar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,13 +48,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <ThemeProvider>
+        <Header
+          isOpen={isNavOpen}
+          onToggle={() => setIsNavOpen((prev) => !prev)}
+        />
+        <Sidebar
+          isOpen={isNavOpen}
+          onClose={() => setIsNavOpen(false)}
+        >
+
+        </Sidebar>
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </ThemeProvider>
     </>
 
   );
