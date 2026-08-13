@@ -1,15 +1,49 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --pik-blue: rgb(62, 133, 247);
+
+  --text: black;
+  --background: #ececec;
+  --foreground: white;
+}
+
+.dark {
+  --text: white;
+  --background: rgb(19, 19, 19);
+  --foreground: black; /* Used on sidebar  & enter screen*/
+}
+
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Roboto", sans-serif;
+  --color-text: var(--text);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-highlight: var(--pik-blue);
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-background;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+p,
+a,
+li,
+h1,
+h2,
+h3,
+button {
+  @apply text-text uppercase;
+}
+
+a,
+button {
+  @apply hover:text-highlight transition-colors cursor-pointer;
 }
