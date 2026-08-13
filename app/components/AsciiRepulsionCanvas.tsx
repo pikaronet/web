@@ -226,15 +226,16 @@ export const AsciiRepulsionCanvas: React.FC<AsciiRepulsionCanvasProps> = ({
     ]);
 
     return (
-        <div style={{ position: 'relative', display: 'inline-block' }}>
+        <div className="relative flex items-center justify-center w-full h-full max-w-full max-h-full overflow-hidden">
             {!isLoaded && <p style={{ fontFamily: 'monospace' }}>Processing image pixels...</p>}
             <canvas
                 ref={canvasRef}
+                className="block max-w-full max-h-full w-auto h-auto object-contain cursor-pointer rounded-lg"
                 style={{
+                    // Guarantees aspect ratio is preserved without stretching past parent bounds
+                    maxHeight: '100%',
                     maxWidth: '100%',
-                    height: 'auto',
-                    cursor: 'pointer',
-                    borderRadius: '8px',
+                    objectFit: 'contain',
                 }}
             />
         </div>
