@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router';
+import siteData from "../data/site-data.json";
+import type { SiteData } from "../types/data";
 
 interface SidebarNavProps {
     isOpen: boolean;
@@ -48,14 +50,14 @@ export const Sidebar: React.FC<SidebarNavProps> = ({ isOpen, onClose }) => {
                 <div className="p-6 pt-20 h-full overflow-y-auto">
                     <nav className="flex flex-col justify-around h-full text-4xl">
                         <div className="flex flex-col">
-                            <a href="/" target="_blank">spotify</a>
-                            <a href="/" target="_blank">bandcamp</a>
-                            <a href="/" target="_blank">soundcloud</a>
-                            <a href="/" target="_blank">apple music</a>
+                            {siteData.socials.music.map((e) => (
+                                <a key={e.name} href={e.url} target="_blank">{e.name}</a>
+                            ))}
                         </div>
                         <div className="flex flex-col">
-                            <a href="/" target="_blank">youtube</a>
-                            <a href="/" target="_blank">instagram</a>
+                            {siteData.socials.other.map((e) => (
+                                <a key={e.name} href={e.url} target="_blank">{e.name}</a>
+                            ))}
                         </div>
                     </nav>
                 </div>

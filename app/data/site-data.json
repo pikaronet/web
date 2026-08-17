@@ -1,0 +1,43 @@
+{
+  "socials": {
+    "music": [
+      {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/artist/6aW855VVe4OPCGJVlMqi8F?si=RLWnDyuOTjaGKd81_p_VEw"
+      },
+      {
+        "name": "Bandcamp",
+        "url": "https://pikaro.bandcamp.com/"
+      },
+      {
+        "name": "Soundcloud",
+        "url": "https://soundcloud.com/hxrtherealest?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+      },
+      {
+        "name": "Apple Music",
+        "url": "https://music.apple.com/us/artist/pikaro/901790123"
+      }
+    ],
+    "other": [
+      {
+        "name": "Youtube",
+        "url": "https://www.youtube.com/channel/UCPm8dZcu4C6meemDkWRiY7w"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/hxrtherealest/"
+      }
+    ]
+  },
+
+  "releases": [
+    {
+      "title": "erin",
+      "releaseDate": "2024-07-26",
+      "image": "../../images/music/IMG_1018.png",
+      "links": {
+        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw"
+      }
+    }
+  ]
+}
