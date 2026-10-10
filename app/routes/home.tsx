@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex-1 w-full h-full max-h-full flex items-center justify-center overflow-hidden relative p-4">
       <AsciiRepulsionCanvas
-        imageSrc="/images/glass_pikaro.png"
+        imageSrc="/images/branding/pikaro/3d_glass.png"
         cellSize={9}
         mouseRadius={100}
         repulsionForce={5}
