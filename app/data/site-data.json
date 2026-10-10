@@ -38,6 +38,27 @@
       "links": {
         "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw"
       }
+    },
+    {
+      "title": "test",
+      "releaseDate": "2024-07-27",
+      "image": "../../images/music/a_time_before.jpg",
+      "links": {
+        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw",
+        "bandcamp":"google.com"
+      }
+    },
+    {
+      "title": "more testys",
+      "releaseDate": "2025-07-27",
+      "image": "../../images/music/damn.jpg",
+      "links": {
+        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw",
+        "bandcamp":"google.com",
+        "applemusic":"google.com",
+        "soundcloud":"google.com",
+        "youtube":"google.com"
+      }
     }
   ]
 }
