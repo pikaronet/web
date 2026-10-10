@@ -8,7 +8,7 @@ export default function ThemeToggle(): React.JSX.Element {
     <button
       type="button"
       onClick={toggleTheme}
-      className="px-3 py-2 rounded-lg btn-secondary text-text-muted transition-colors"
+      className="rounded-lg btn-secondary text-text-muted transition-colors p-0 m-0"
       aria-label="Toggle dark mode"
     >
       <p>{isDark ? "light" : "dark"}</p>
