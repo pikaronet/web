@@ -17,6 +17,10 @@ export default function Discography() {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+    // Throttle ref to prevent rapid-fire scrolling skips
+    const isScrollingRef = useRef<boolean>(false);
+    const touchStartYRef = useRef<number>(0);
+
     const activeRelease: Release = data.releases[activeIndex] || data.releases[0];
 
     // 1. Dynamically extract unique years (sorted descending)
@@ -30,30 +34,69 @@ export default function Discography() {
 
     const activeYear = new Date(activeRelease.releaseDate).getFullYear();
 
-    // 2. Track active index via IntersectionObserver (optimized threshold for instant response)
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = Number(entry.target.getAttribute("data-index"));
-                        if (!isNaN(index)) {
-                            setActiveIndex(index);
-                        }
-                    }
-                });
-            },
-            {
-                threshold: 0.2, // Triggers earlier for a snappier response
+    // 2. Custom instant-scroll handler function
+    const changeRelease = (direction: "next" | "prev") => {
+        if (isScrollingRef.current) return;
+
+        setActiveIndex((prev) => {
+            let nextIndex = prev;
+            if (direction === "next" && prev < data.releases.length - 1) {
+                nextIndex = prev + 1;
+            } else if (direction === "prev" && prev > 0) {
+                nextIndex = prev - 1;
             }
-        );
 
-        itemRefs.current.forEach((el) => {
-            if (el) observer.observe(el);
+            if (nextIndex !== prev) {
+                isScrollingRef.current = true;
+                // Scroll the corresponding target into view smoothly
+                itemRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth" });
+
+                // Reset throttle lock after animation completes
+                setTimeout(() => {
+                    isScrollingRef.current = false;
+                }, 200);
+            }
+            return nextIndex;
         });
+    };
 
-        return () => observer.disconnect();
-    }, []);
+    // Desktop Wheel Event Listener
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const handleWheel = (e: WheelEvent) => {
+            e.preventDefault();
+            if (Math.abs(e.deltaY) < 20) return; // Ignore micro-scrolls
+
+            if (e.deltaY > 0) {
+                changeRelease("next");
+            } else {
+                changeRelease("prev");
+            }
+        };
+
+        container.addEventListener("wheel", handleWheel, { passive: false });
+        return () => container.removeEventListener("wheel", handleWheel);
+    }, [activeIndex]);
+
+    // Mobile Touch Gesture Listeners
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartYRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        const touchEndY = e.changedTouches[0].clientY;
+        const diff = touchStartYRef.current - touchEndY;
+
+        if (Math.abs(diff) > 40) { // Minimum swipe threshold
+            if (diff > 0) {
+                changeRelease("next"); // Swipe Up
+            } else {
+                changeRelease("prev"); // Swipe Down
+            }
+        }
+    };
 
     // 3. Scroll to the first release of the selected year
     const scrollToYear = (targetYear: number) => {
@@ -63,6 +106,7 @@ export default function Discography() {
         });
 
         if (targetIndex !== -1 && itemRefs.current[targetIndex]) {
+            setActiveIndex(targetIndex);
             itemRefs.current[targetIndex]?.scrollIntoView({ behavior: "smooth" });
         }
     };
@@ -70,7 +114,9 @@ export default function Discography() {
     return (
         <div
             ref={containerRef}
-            className="text-right w-full relative snap-y snap-mandatory overflow-y-auto h-[calc(100vh-80px)] h-[calc(100dvh-80px)]"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="text-right w-full relative overflow-y-hidden h-[calc(100vh-80px)] h-[calc(100dvh-80px)] select-none"
         >
             {/* 1. STICKY DISPLAY FRAME */}
             <div className="sticky top-0 w-full h-full flex flex-col-reverse md:grid md:grid-cols-2 overflow-hidden pointer-events-none">
@@ -128,7 +174,7 @@ export default function Discography() {
                     </div>
                 </div>
 
-                {/* RIGHT COLUMN: Single Active Cover Image (Lag-Free) */}
+                {/* RIGHT COLUMN: Single Active Cover Image */}
                 <div className="relative h-[260px] md:h-full w-full flex items-center justify-center p-4 md:p-16 overflow-hidden shrink-0">
                     <div className="relative aspect-square w-full h-full max-w-xs md:max-w-xl flex items-center justify-center">
                         <img
@@ -141,7 +187,7 @@ export default function Discography() {
             </div>
 
             {/* 2. INVISIBLE SCROLL TARGETS */}
-            <div className="absolute inset-0 top-0 left-0 w-full pointer-events-none">
+            <div className="absolute inset-0 top-0 left-0 w-full pointer-events-none overflow-hidden">
                 {data.releases.map((release, index) => (
                     <div
                         key={`snap-${release.title}`}
@@ -149,7 +195,7 @@ export default function Discography() {
                         ref={(el) => {
                             itemRefs.current[index] = el;
                         }}
-                        className="w-full h-full min-h-[calc(100vh-80px)] min-h-[calc(100dvh-80px)] snap-start"
+                        className="w-full h-full min-h-[calc(100vh-80px)] min-h-[calc(100dvh-80px)]"
                     />
                 ))}
             </div>
