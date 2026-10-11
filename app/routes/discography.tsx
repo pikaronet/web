@@ -3,7 +3,7 @@ import siteData from "../data/site-data.json";
 import type { SiteData, Release } from "../types/data";
 import type { Route } from "./+types/home";
 
-const data = siteData as SiteData;
+const rawData = siteData as SiteData;
 const IMAGE_BASE_URL = "/images/covers/";
 
 export function meta({ }: Route.MetaArgs) {
@@ -21,16 +21,23 @@ export default function Discography() {
     const isScrollingRef = useRef<boolean>(false);
     const touchStartYRef = useRef<number>(0);
 
-    const activeRelease: Release = data.releases[activeIndex] || data.releases[0];
+    // Sort releases by releaseDate descending (newest first)
+    const sortedReleases = useMemo(() => {
+        return [...rawData.releases].sort((a, b) => {
+            return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+        });
+    }, []);
+
+    const activeRelease: Release = sortedReleases[activeIndex] || sortedReleases[0];
 
     // 1. Dynamically extract unique years (sorted descending)
     const availableYears = useMemo(() => {
-        const years = data.releases
+        const years = sortedReleases
             .map((release) => new Date(release.releaseDate).getFullYear())
             .filter((year) => !isNaN(year));
 
         return Array.from(new Set(years)).sort((a, b) => b - a);
-    }, []);
+    }, [sortedReleases]);
 
     const activeYear = new Date(activeRelease.releaseDate).getFullYear();
 
@@ -40,7 +47,7 @@ export default function Discography() {
 
         setActiveIndex((prev) => {
             let nextIndex = prev;
-            if (direction === "next" && prev < data.releases.length - 1) {
+            if (direction === "next" && prev < sortedReleases.length - 1) {
                 nextIndex = prev + 1;
             } else if (direction === "prev" && prev > 0) {
                 nextIndex = prev - 1;
@@ -100,7 +107,7 @@ export default function Discography() {
 
     // 3. Scroll to the first release of the selected year
     const scrollToYear = (targetYear: number) => {
-        const targetIndex = data.releases.findIndex((release) => {
+        const targetIndex = sortedReleases.findIndex((release) => {
             const releaseYear = new Date(release.releaseDate).getFullYear();
             return releaseYear === targetYear;
         });
@@ -163,8 +170,8 @@ export default function Discography() {
                                     key={year}
                                     onClick={() => scrollToYear(year)}
                                     className={`transition-colors cursor-pointer [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180 text-xs md:text-sm ${isSelected
-                                        ? "!text-highlight font-bold"
-                                        : ""
+                                            ? "!text-highlight font-bold"
+                                            : ""
                                         }`}
                                 >
                                     {year}
@@ -188,7 +195,7 @@ export default function Discography() {
 
             {/* 2. INVISIBLE SCROLL TARGETS */}
             <div className="absolute inset-0 top-0 left-0 w-full pointer-events-none overflow-hidden">
-                {data.releases.map((release, index) => (
+                {sortedReleases.map((release, index) => (
                     <div
                         key={`snap-${release.title}`}
                         data-index={index}
