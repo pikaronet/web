@@ -181,15 +181,27 @@ export default function Discography() {
                     </div>
                 </div>
 
-                {/* RIGHT COLUMN: Single Active Cover Image */}
+                {/* RIGHT COLUMN: Cross-Fading Cover Images */}
                 <div className="relative h-[260px] md:h-full w-full flex items-center justify-center p-4 md:p-16 overflow-hidden shrink-0">
-                    <div className="relative aspect-square w-full h-full max-w-xs md:max-w-xl flex items-center justify-center">
-                        <img
-                            src={`${IMAGE_BASE_URL}${activeRelease.image}`}
-                            alt={activeRelease.title}
-                            className="w-full h-full object-contain"
-                        />
-                    </div>
+                    {sortedReleases.map((release, index) => {
+                        const isActive = index === activeIndex;
+
+                        return (
+                            <div
+                                key={release.title}
+                                className={`absolute inset-0 flex items-center justify-center p-4 md:p-16 transition-opacity duration-350 ease-in-out ${isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+                                    }`}
+                            >
+                                <div className="relative aspect-square w-full h-full max-w-xs md:max-w-xl flex items-center justify-center">
+                                    <img
+                                        src={`${IMAGE_BASE_URL}${release.image}`}
+                                        alt={release.title}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 
