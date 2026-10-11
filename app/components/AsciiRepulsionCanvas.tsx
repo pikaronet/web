@@ -227,7 +227,7 @@ export const AsciiRepulsionCanvas: React.FC<AsciiRepulsionCanvasProps> = ({
 
     return (
         <div className="relative flex items-center justify-center w-full h-full max-w-full max-h-full overflow-hidden">
-            {!isLoaded && <p style={{ fontFamily: 'monospace' }}>Processing image pixels...</p>}
+
             <canvas
                 ref={canvasRef}
                 className="block max-w-full max-h-full w-auto h-auto object-contain cursor-pointer rounded-lg"
