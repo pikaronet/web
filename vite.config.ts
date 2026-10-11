@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter()],
+  base: "./", // Ensures all asset paths are relative
   resolve: {
     tsconfigPaths: true,
   },
