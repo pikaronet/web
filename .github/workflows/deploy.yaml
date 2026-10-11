@@ -27,7 +27,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v3 # Or just run 'npm ci'
+        run: npm ci
 
       - name: Build project
         run: npm run build
@@ -35,7 +35,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Point this to your build output directory (e.g., 'build/client' or 'dist')
           path: ./build/client 
 
   deploy:
