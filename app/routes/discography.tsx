@@ -123,7 +123,7 @@ export default function Discography() {
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            className="text-right w-full relative overflow-y-hidden h-[calc(100vh-80px)] h-[calc(100dvh-80px)] select-none"
+            className="text-right w-full relative overflow-y-hidden h-[calc(100dvh-80px)] select-none"
         >
             {/* 1. STICKY DISPLAY FRAME */}
             <div className="sticky top-0 w-full h-full flex flex-col-reverse md:grid md:grid-cols-2 overflow-hidden pointer-events-none">
@@ -134,7 +134,7 @@ export default function Discography() {
                     {/* Details Content */}
                     <div className="flex flex-col gap-4">
                         <div>
-                            <h2 className="text-2xl md:text-4xl tracking-tight text-text break-words">
+                            <h2 className="text-2xl md:text-4xl tracking-tight text-text wrap-break-word">
                                 {activeRelease.title}
                             </h2>
                             <p className="text-sm text-text">{activeRelease.releaseDate.split("-")[0]}</p>
@@ -149,7 +149,7 @@ export default function Discography() {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="!lowercase text-xs md:text-sm py-1 block text-text hover:!text-highlight transition-colors"
+                                        className="lowercase! text-xs md:text-sm py-1 block text-text hover:text-highlight! transition-colors"
                                     >
                                         <div className="flex flex-col md:flex-row md:justify-between gap-0.5 md:gap-2">
                                             <div className="font-medium shrink-0"><span>{platform}:</span></div>
@@ -170,7 +170,7 @@ export default function Discography() {
                                     key={year}
                                     onClick={() => scrollToYear(year)}
                                     className={`transition-colors cursor-pointer [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180 text-xs md:text-sm ${isSelected
-                                        ? "!text-highlight font-bold"
+                                        ? "text-highlight! font-bold"
                                         : "hover:text-highlight"
                                         }`}
                                 >
@@ -182,7 +182,7 @@ export default function Discography() {
                 </div>
 
                 {/* RIGHT COLUMN: Cross-Fading Cover Images */}
-                <div className="relative h-[260px] md:h-full w-full flex items-center justify-center p-4 md:p-16 overflow-hidden shrink-0">
+                <div className="relative h-65 md:h-full w-full flex items-center justify-center p-4 md:p-16 overflow-hidden shrink-0">
                     {sortedReleases.map((release, index) => {
                         const isActive = index === activeIndex;
 
@@ -214,7 +214,7 @@ export default function Discography() {
                         ref={(el) => {
                             itemRefs.current[index] = el;
                         }}
-                        className="w-full h-full min-h-[calc(100vh-80px)] min-h-[calc(100dvh-80px)]"
+                        className="w-full h-full min-h-[calc(100vh-80px)]"
                     />
                 ))}
             </div>
