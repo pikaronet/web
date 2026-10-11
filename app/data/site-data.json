@@ -29,35 +29,38 @@
       }
     ]
   },
-
   "releases": [
     {
       "title": "erin",
       "releaseDate": "2024-07-26",
-      "image": "../../images/music/IMG_1018.png",
+      "image": "erin.png",
       "links": {
-        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw"
+        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw",
+        "bandcamp": "https://svpacyberia.bandcamp.com/album/erin",
+        "applemusic": "https://music.apple.com/ng/album/erin/1757020714",
+        "youtube": "https://youtube.com/playlist?list=OLAK5uy_lleXJKprHrln4iLZN0kYq95slLGcRH82I&si=nxKM5MP-tL12-pqN"
       }
     },
     {
-      "title": "test",
-      "releaseDate": "2024-07-27",
-      "image": "../../images/music/a_time_before.jpg",
+      "title": "Rx",
+      "releaseDate": "2026-07-03",
+      "image": "Rx.webp",
       "links": {
-        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw",
-        "bandcamp":"google.com"
+        "spotify": "https://open.spotify.com/track/5SinNRssuHLmZ42nBk5VRk?si=f88b374f884d436d",
+        "bandcamp": "https://pikaro.bandcamp.com/album/rx",
+        "applemusic": "https://music.apple.com/us/album/rx-single/6782199827",
+        "youtube": "https://youtu.be/BSEkXrm5g1Y?si=ohpieE_z_0b4__Ie"
       }
     },
     {
-      "title": "more testys",
-      "releaseDate": "2025-07-27",
-      "image": "../../images/music/damn.jpg",
+      "title": " the memories fade but the feeling remains ",
+      "releaseDate": "2025-05-30",
+      "image": "tmfbtfr.webp",
       "links": {
-        "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw",
-        "bandcamp":"google.com",
-        "applemusic":"google.com",
-        "soundcloud":"google.com",
-        "youtube":"google.com"
+        "spotify": "https://open.spotify.com/album/19Lg8n6FPx5ka7ykCoVWj4?si=qMChIqiSQRS25VDRd6rZaw",
+        "bandcamp": "https://pikaro.bandcamp.com/album/the-memories-fade-but-the-feeling-remains",
+        "applemusic": "https://music.apple.com/us/album/the-memories-fade-but-the-feeling-remains-single/1814963607",
+        "youtube": "https://youtu.be/0cVlto8BBO4?si=UZCErk_W0-ovcq8p"
       }
     }
   ]
