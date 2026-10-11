@@ -137,7 +137,7 @@ export default function Discography() {
                             <h2 className="text-2xl md:text-4xl tracking-tight text-text break-words">
                                 {activeRelease.title}
                             </h2>
-                            <p className="text-sm">{activeRelease.releaseDate.split("-")[0]}</p>
+                            <p className="text-sm text-text">{activeRelease.releaseDate.split("-")[0]}</p>
                         </div>
 
                         {/* Platform Links */}
@@ -149,11 +149,11 @@ export default function Discography() {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="!lowercase text-xs md:text-sm py-1 block"
+                                        className="!lowercase text-xs md:text-sm py-1 block text-text hover:!text-highlight transition-colors"
                                     >
                                         <div className="flex flex-col md:flex-row md:justify-between gap-0.5 md:gap-2">
                                             <div className="font-medium shrink-0"><span>{platform}:</span></div>
-                                            <div className="break-all text-text/70"><span>{url}</span></div>
+                                            <div className="break-all text-inherit"><span>{url}</span></div>
                                         </div>
                                     </a>
                                 ))}
@@ -170,8 +170,8 @@ export default function Discography() {
                                     key={year}
                                     onClick={() => scrollToYear(year)}
                                     className={`transition-colors cursor-pointer [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180 text-xs md:text-sm ${isSelected
-                                            ? "!text-highlight font-bold"
-                                            : ""
+                                        ? "!text-highlight font-bold"
+                                        : "hover:text-highlight"
                                         }`}
                                 >
                                     {year}
