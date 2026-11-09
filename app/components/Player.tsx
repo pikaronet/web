@@ -49,6 +49,7 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({ src, autoPlay = fa
                 ref={playerRef}
                 autoPlay={Boolean(src && autoPlay)}
                 src={src}
+                showDownloadProgress={false}
             />
         </div>
     );

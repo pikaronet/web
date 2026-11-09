@@ -39,7 +39,7 @@
 .player-wrapper .rhap_volume-filled,
 .player-wrapper .rhap_volume-indicator,
 .player-wrapper .rhap_volume {
-  background-color: var(--pik-blue);
+  background-color: var(--text);
 }
 
 .player-wrapper--disabled {
