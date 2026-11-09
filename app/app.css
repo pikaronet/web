@@ -42,6 +42,14 @@
   background-color: var(--pik-blue);
 }
 
+.player-wrapper--disabled {
+  opacity: 0.45;
+}
+
+.player-wrapper--disabled .rhap_container {
+  pointer-events: none;
+}
+
 @theme {
   --font-sans: "Roboto", sans-serif;
   --color-text: var(--text);

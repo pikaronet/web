@@ -29,12 +29,12 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({ src, autoPlay = fa
 
     useEffect(() => {
         const audio = playerRef.current?.audio?.current;
-        if (!audio || !src) return;
+        if (!audio) return;
 
         audio.pause();
         audio.currentTime = 0;
 
-        if (autoPlay) {
+        if (src && autoPlay) {
             const playPromise = audio.play();
             if (playPromise && typeof playPromise.catch === 'function') {
                 playPromise.catch(() => undefined);
@@ -42,13 +42,11 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({ src, autoPlay = fa
         }
     }, [src, autoPlay]);
 
-    if (!src) return null;
-
     return (
-        <div className="player-wrapper">
+        <div className={`player-wrapper${src ? '' : ' player-wrapper--disabled'}`}>
             <AudioPlayer
                 ref={playerRef}
-                autoPlay={autoPlay}
+                autoPlay={Boolean(src && autoPlay)}
                 src={src}
             />
         </div>
