@@ -44,6 +44,7 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({ src, autoPlay = fa
 
     return (
         <div className={`player-wrapper${src ? '' : ' player-wrapper--disabled'}`}>
+            <p className="text-left lowercase!">{src ? src.slice(7) : '404'}</p>
             <AudioPlayer
                 ref={playerRef}
                 autoPlay={Boolean(src && autoPlay)}
