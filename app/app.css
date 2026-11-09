@@ -16,6 +16,32 @@
   --foreground: black; /* Used on sidebar  & enter screen*/
 }
 
+.player-wrapper .rhap_container {
+  background-color: var(--background);
+  color: var(--text);
+  
+}
+
+.player-wrapper .rhap_time,
+.player-wrapper .rhap_main-controls-button,
+.player-wrapper .rhap_repeat-button,
+.player-wrapper .rhap_volume-button {
+  color: var(--text);
+}
+
+.player-wrapper .rhap_progress-bar,
+.player-wrapper .rhap_volume-bar {
+  background-color: color-mix(in srgb, var(--text) 20%, transparent);
+}
+
+.player-wrapper .rhap_progress-filled,
+.player-wrapper .rhap_progress-indicator,
+.player-wrapper .rhap_volume-filled,
+.player-wrapper .rhap_volume-indicator,
+.player-wrapper .rhap_volume {
+  background-color: var(--pik-blue);
+}
+
 @theme {
   --font-sans: "Roboto", sans-serif;
   --color-text: var(--text);

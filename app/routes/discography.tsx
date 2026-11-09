@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import siteData from "../data/site-data.json";
 import type { SiteData, Release } from "../types/data";
 import type { Route } from "./+types/home";
+import Player, { type PlayerHandle } from "~/components/Player";
 
 const rawData = siteData as SiteData;
 const IMAGE_BASE_URL = "/images/covers/";
@@ -16,6 +17,7 @@ export default function Discography() {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const playerRef = useRef<PlayerHandle | null>(null);
 
     // Throttle ref to prevent rapid-fire scrolling skips
     const isScrollingRef = useRef<boolean>(false);
@@ -29,6 +31,15 @@ export default function Discography() {
     }, []);
 
     const activeRelease: Release = sortedReleases[activeIndex] || sortedReleases[0];
+    const activeTrack = activeRelease.file ? `/audio/${activeRelease.file}` : undefined;
+
+    const queuePlayback = () => {
+        if (typeof window === "undefined") return;
+
+        window.setTimeout(() => {
+            playerRef.current?.play();
+        }, 50);
+    };
 
     // 1. Dynamically extract unique years (sorted descending)
     const availableYears = useMemo(() => {
@@ -57,11 +68,12 @@ export default function Discography() {
                 isScrollingRef.current = true;
                 // Scroll the corresponding target into view smoothly
                 itemRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth" });
+               queuePlayback();
 
-                // Reset throttle lock after animation completes
-                setTimeout(() => {
-                    isScrollingRef.current = false;
-                }, 200);
+               // Reset throttle lock after animation completes
+               setTimeout(() => {
+                   isScrollingRef.current = false;
+               }, 200);
             }
             return nextIndex;
         });
@@ -115,6 +127,7 @@ export default function Discography() {
         if (targetIndex !== -1 && itemRefs.current[targetIndex]) {
             setActiveIndex(targetIndex);
             itemRefs.current[targetIndex]?.scrollIntoView({ behavior: "smooth" });
+           queuePlayback();
         }
     };
 
@@ -160,6 +173,7 @@ export default function Discography() {
                             </div>
                         )}
                     </div>
+                    <Player ref={playerRef} src={activeTrack} autoPlay />
 
                     {/* Year Filter Buttons */}
                     <div className="flex flex-wrap items-center gap-2 justify-end pt-4">

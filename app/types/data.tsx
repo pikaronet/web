@@ -20,6 +20,7 @@ export interface Release {
     title: string;
     releaseDate: string;
     image: string;
+    file?: string;
     links?: ReleaseLinks;
 }
 
