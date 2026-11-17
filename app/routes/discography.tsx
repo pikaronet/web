@@ -195,6 +195,11 @@ export default function Discography() {
                                 setActiveTrackIndex((index) => index - 1);
                             }
                         }}
+                        onEnded={() => {
+                            if (activeTrackIndex < activeRelease.tracks.length - 1) {
+                                setActiveTrackIndex((index) => index + 1);
+                            }
+                        }}
                     />
 
                     {/* Year Filter Buttons */}

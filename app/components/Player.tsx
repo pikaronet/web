@@ -7,6 +7,7 @@ type PlayerProps = {
     autoPlay?: boolean;
     onNext?: (event: React.SyntheticEvent) => void;
     onPrevious?: (event: React.SyntheticEvent) => void;
+    onEnded?: (event: Event) => void;
 };
 
 export type PlayerHandle = {
@@ -18,6 +19,7 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({
     autoPlay = false,
     onNext,
     onPrevious,
+    onEnded,
 }, ref) => {
     const playerRef = useRef<any>(null);
 
@@ -61,6 +63,7 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({
                 showSkipControls={true}
                 onClickNext={onNext}
                 onClickPrevious={onPrevious}
+                onEnded={onEnded}
                 showFilledVolume={true}
                 volume={0.20}
             />
