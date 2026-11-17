@@ -16,11 +16,18 @@ export interface ReleaseLinks {
     soundcloud?: string;
 }
 
+export interface ReleaseTrack {
+    trackNumber: number;
+    title: string;
+    file: string;
+}
+
 export interface Release {
     title: string;
+    slug: string;
     releaseDate: string;
     image: string;
-    file?: string;
+    tracks: ReleaseTrack[];
     links?: ReleaseLinks;
 }
 

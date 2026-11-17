@@ -5,13 +5,20 @@ import 'react-h5-audio-player/lib/styles.css';
 type PlayerProps = {
     src?: string;
     autoPlay?: boolean;
+    onNext?: (event: React.SyntheticEvent) => void;
+    onPrevious?: (event: React.SyntheticEvent) => void;
 };
 
 export type PlayerHandle = {
     play: () => Promise<void> | void;
 };
 
-const Player = React.forwardRef<PlayerHandle, PlayerProps>(({ src, autoPlay = false }, ref) => {
+const Player = React.forwardRef<PlayerHandle, PlayerProps>(({
+    src,
+    autoPlay = false,
+    onNext,
+    onPrevious,
+}, ref) => {
     const playerRef = useRef<any>(null);
 
     useImperativeHandle(ref, () => ({
@@ -44,12 +51,17 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({ src, autoPlay = fa
 
     return (
         <div className={`player-wrapper${src ? '' : ' player-wrapper--disabled'}`}>
-            <p className="text-left lowercase!">{src ? src.slice(7) : '404'}</p>
+            <p className="text-left lowercase!">{src ? src.split('/').pop() : '404'}</p>
             <AudioPlayer
                 ref={playerRef}
                 autoPlay={Boolean(src && autoPlay)}
                 src={src}
                 showDownloadProgress={false}
+                showJumpControls={false}
+                showSkipControls={true}
+                onClickNext={onNext}
+                onClickPrevious={onPrevious}
+                showFilledVolume={true}
             />
         </div>
     );

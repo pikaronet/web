@@ -32,56 +32,191 @@
   "releases": [
     {
       "title": "erin",
+      "slug": "erin",
       "releaseDate": "2024-07-26",
       "image": "erin.png",
+      "tracks": [
+        {
+          "trackNumber": 1,
+          "title": "yuriy",
+          "file": "01-yuriy.mp3"
+        },
+        {
+          "trackNumber": 2,
+          "title": "davine lu linvega (feat. Zhnoi)",
+          "file": "02-davine-lu-linvega-feat-zhnoi.mp3"
+        },
+        {
+          "trackNumber": 3,
+          "title": "crisis complex",
+          "file": "03-crisis-complex.mp3"
+        },
+        {
+          "trackNumber": 4,
+          "title": "in another life",
+          "file": "04-in-another-life.mp3"
+        },
+        {
+          "trackNumber": 5,
+          "title": "the garden (feat. tomspicy)",
+          "file": "05-the-garden-feat-tomspicy.mp3"
+        },
+        {
+          "trackNumber": 6,
+          "title": "code:langley",
+          "file": "06-code-langley.mp3"
+        },
+        {
+          "trackNumber": 7,
+          "title": "everyone i love suffers because of me",
+          "file": "07-suffer.mp3"
+        },
+        {
+          "trackNumber": 8,
+          "title": "afterimage from burned vision, and god it is still you (feat. TheAster)",
+          "file": "08-afterimage-from-burned-vision-and-god-it-is-still-you-feat-theaster.mp3"
+        },
+        {
+          "trackNumber": 9,
+          "title": "erin",
+          "file": "09-erin.mp3"
+        }
+      ],
       "links": {
         "spotify": "https://open.spotify.com/album/15byuGyRA1VefqfZ9gReWQ?si=bENnwvO_QGKKr5XSGxoEzw",
         "bandcamp": "https://svpacyberia.bandcamp.com/album/erin",
-        "applemusic": "https://music.apple.com/ng/album/erin/1757020714",
+        "appleMusic": "https://music.apple.com/ng/album/erin/1757020714",
         "youtube": "https://youtube.com/playlist?list=OLAK5uy_lleXJKprHrln4iLZN0kYq95slLGcRH82I&si=nxKM5MP-tL12-pqN"
       }
     },
     {
       "title": "Rx",
+      "slug": "rx",
       "releaseDate": "2026-07-03",
       "image": "Rx.webp",
+      "tracks": [
+        {
+          "trackNumber": 1,
+          "title": "Rx",
+          "file": "01-rx.mp3"
+        }
+      ],
       "links": {
         "spotify": "https://open.spotify.com/track/5SinNRssuHLmZ42nBk5VRk?si=f88b374f884d436d",
         "bandcamp": "https://pikaro.bandcamp.com/album/rx",
-        "applemusic": "https://music.apple.com/us/album/rx-single/6782199827",
+        "appleMusic": "https://music.apple.com/us/album/rx-single/6782199827",
         "youtube": "https://youtu.be/BSEkXrm5g1Y?si=ohpieE_z_0b4__Ie"
       }
     },
     {
       "title": " the memories fade but the feeling remains ",
+      "slug": "the-memories-fade-but-the-feeling-remains",
       "releaseDate": "2025-05-30",
       "image": "tmfbtfr.webp",
+      "tracks": [
+        {
+          "trackNumber": 1,
+          "title": "the memories fade but the feeling remains",
+          "file": "01-the-memories-fade-but-the-feeling-remains.mp3"
+        },
+        {
+          "trackNumber": 2,
+          "title": "the memories fade but the feeling remains (SLOWED)",
+          "file": "02-the-memories-fade-but-the-feeling-remains-slowed.mp3"
+        }
+      ],
       "links": {
         "spotify": "https://open.spotify.com/album/19Lg8n6FPx5ka7ykCoVWj4?si=qMChIqiSQRS25VDRd6rZaw",
         "bandcamp": "https://pikaro.bandcamp.com/album/the-memories-fade-but-the-feeling-remains",
-        "applemusic": "https://music.apple.com/us/album/the-memories-fade-but-the-feeling-remains-single/1814963607",
+        "appleMusic": "https://music.apple.com/us/album/the-memories-fade-but-the-feeling-remains-single/1814963607",
         "youtube": "https://youtu.be/0cVlto8BBO4?si=UZCErk_W0-ovcq8p"
       }
     },
     {
       "title": " cross ",
+      "slug": "cross",
       "releaseDate": "2025-08-26",
       "image": "cross.jpg",
+      "tracks": [
+        {
+          "trackNumber": 1,
+          "title": "y (x)",
+          "file": "01-yx.mp3"
+        },
+        {
+          "trackNumber": 2,
+          "title": "prototype",
+          "file": "02-prototype.mp3"
+        }
+      ],
       "links": {
         "spotify": "https://open.spotify.com/album/0LhHxeLf41Uy9YWYysNxfI?si=Gh_ewXgqR92XN4Aau9HDsw",
         "bandcamp": "https://pikaro.bandcamp.com/album/cross",
-        "applemusic": "https://music.apple.com/us/album/cross-single/1835950335",
+        "appleMusic": "https://music.apple.com/us/album/cross-single/1835950335",
         "youtube": "https://youtube.com/playlist?list=OLAK5uy_nRRU-SvQwskmg_koJnj13_pYN8t1ctWtw&si=TjGFzuUKCjJ83vCn"
       }
     },
     {
       "title": " ERiN:re ",
+      "slug": "erin-re",
       "releaseDate": "2024-10-25",
       "image": "erinre.jpg",
+      "tracks": [
+        {
+          "trackNumber": 1,
+          "title": "crisis complex (Sukii Remix)",
+          "file": "01-crisis-complex-sukii-remix.mp3"
+        },
+        {
+          "trackNumber": 2,
+          "title": "afterimage (Chitohidara Remix)",
+          "file": "02-afterimage-chitohidara-remix.mp3"
+        },
+        {
+          "trackNumber": 3,
+          "title": "davine lu linvega (Karia Remix)",
+          "file": "03-davine-lu-linvega-karia-remix.mp3"
+        },
+        {
+          "trackNumber": 4,
+          "title": "crisis complex (sadfem Remix)",
+          "file": "04-crisis-complex-sadfem-remix.mp3"
+        },
+        {
+          "trackNumber": 5,
+          "title": "the garden (intra Remix)",
+          "file": "05-the-garden-intra-remix.mp3"
+        },
+        {
+          "trackNumber": 6,
+          "title": "in another life (Jikuro Remix)",
+          "file": "06-in-another-life-jikuro-remix.mp3"
+        },
+        {
+          "trackNumber": 7,
+          "title": "afterimage (rikiie!! Remix)",
+          "file": "07-afterimage-rikiie-remix.mp3"
+        },
+        {
+          "trackNumber": 8,
+          "title": "crisis complex (phantasy Remix)",
+          "file": "08-crisis-complex-phantasy-remix.mp3"
+        },
+        {
+          "trackNumber": 9,
+          "title": "afterimage (tomspicy Remix)",
+          "file": "09-afterimage-tomspicy-remix.mp3"
+        },
+        {
+          "trackNumber": 10,
+          "title": "erin (phantasy Remix)",
+          "file": "10-erin-phantasy-remix.mp3"
+        }
+      ],
       "links": {
         "spotify": "https://open.spotify.com/album/56YDHzMzwAxuMetGp7PHNS?si=RoerYbNnR1eSdJfVy2M5og",
         "bandcamp": "https://pikaro.bandcamp.com/album/erin-re",
-        "applemusic": "https://music.apple.com/us/album/erin-re/1774332661",
+        "appleMusic": "https://music.apple.com/us/album/erin-re/1774332661",
         "youtube": "https://youtu.be/FWwTqOu9ULU?si=3j86xr--Yb14W9El"
       }
     }

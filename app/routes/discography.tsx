@@ -15,6 +15,7 @@ export function meta({ }: Route.MetaArgs) {
 
 export default function Discography() {
     const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [activeTrackIndex, setActiveTrackIndex] = useState<number>(0);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
     const playerRef = useRef<PlayerHandle | null>(null);
@@ -25,13 +26,18 @@ export default function Discography() {
 
     // Sort releases by releaseDate descending (newest first)
     const sortedReleases = useMemo(() => {
-        return [...rawData.releases].sort((a, b) => {
+        return rawData.releases
+            .filter((release) => release.slug && Array.isArray(release.tracks))
+            .sort((a, b) => {
             return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
-        });
+            });
     }, []);
 
     const activeRelease: Release = sortedReleases[activeIndex] || sortedReleases[0];
-    const activeTrack = activeRelease.file ? `/audio/${activeRelease.file}` : undefined;
+    const activeAlbumTrack = activeRelease.tracks[activeTrackIndex];
+    const activeTrack = activeAlbumTrack
+        ? `/audio/${activeRelease.slug}/${activeAlbumTrack.file}`
+        : undefined;
 
     const queuePlayback = () => {
         if (typeof window === "undefined") return;
@@ -65,6 +71,7 @@ export default function Discography() {
             }
 
             if (nextIndex !== prev) {
+                setActiveTrackIndex(0);
                 isScrollingRef.current = true;
                 // Scroll the corresponding target into view smoothly
                 itemRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth" });
@@ -125,6 +132,7 @@ export default function Discography() {
         });
 
         if (targetIndex !== -1 && itemRefs.current[targetIndex]) {
+            setActiveTrackIndex(0);
             setActiveIndex(targetIndex);
             itemRefs.current[targetIndex]?.scrollIntoView({ behavior: "smooth" });
            queuePlayback();
@@ -173,7 +181,21 @@ export default function Discography() {
                             </div>
                         )}
                     </div>
-                    <Player ref={playerRef} src={activeTrack} autoPlay />
+                    <Player
+                        ref={playerRef}
+                        src={activeTrack}
+                        autoPlay
+                        onNext={() => {
+                            if (activeTrackIndex < activeRelease.tracks.length - 1) {
+                                setActiveTrackIndex((index) => index + 1);
+                            }
+                        }}
+                        onPrevious={() => {
+                            if (activeTrackIndex > 0) {
+                                setActiveTrackIndex((index) => index - 1);
+                            }
+                        }}
+                    />
 
                     {/* Year Filter Buttons */}
                     <div className="flex flex-wrap items-center gap-2 justify-end pt-4">
