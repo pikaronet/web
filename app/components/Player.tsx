@@ -62,6 +62,7 @@ const Player = React.forwardRef<PlayerHandle, PlayerProps>(({
                 onClickNext={onNext}
                 onClickPrevious={onPrevious}
                 showFilledVolume={true}
+                volume={0.20}
             />
         </div>
     );
